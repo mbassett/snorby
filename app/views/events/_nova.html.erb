@@ -1,0 +1,22 @@
+<div class='section-title plus'>Nova Header Information</div>
+
+<div class='proto plus'>
+
+	<table class='default' border='0' cellspacing='0' cellpadding='0'>
+		<tr>
+			<th class='first'>Tenant ID</th>
+			<th>Instance ID</th>
+			<th>User Email</th>
+			<th class ='last'>User ID</th>
+		</tr>
+		<tbody>
+			<tr>
+				<td class='first'><%= @event.nova.tenantid %></td>
+				<td><%= @event.nova.instanceid %></td>
+				<td><%= @event.nova.user_email %></td>
+				<td class='last'><%= @event.nova.userid %></td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>

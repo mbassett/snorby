@@ -67,6 +67,9 @@ class Event
   has 1, :udp, :parent_key => [ :sid, :cid ], 
     :child_key => [ :sid, :cid ], :constraint => :destroy!
 
+  has 1, :nova, :parent_key => [ :sid, :cid ], 
+    :child_key => [ :sid, :cid ], :constraint => :destroy!
+
   has 1, :opt, :parent_key => [ :sid, :cid ], 
     :child_key => [ :sid, :cid ], :constraint => :destroy!
 
@@ -648,6 +651,18 @@ class Event
   #
   def udp?
     return true unless udp.blank?
+    false
+  end
+
+
+  #
+  # NOVA 
+  #
+  # @return [Boolean] return true
+  # if the event has nova data.
+  #
+  def nova?
+    return true unless nova.blank?
     false
   end
 

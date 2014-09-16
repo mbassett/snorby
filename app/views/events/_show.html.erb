@@ -80,6 +80,8 @@
 			<%= render :partial => 'events/udp' %>
 		<% elsif @event.icmp? %>
 			<%= render :partial => 'events/icmp' %>
+                <% elsif @event.nova? %>
+                        <%= render :partial => 'events/nova' %>
 		<% else %>
 			
 		<% end %>
