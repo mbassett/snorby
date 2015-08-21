@@ -105,7 +105,9 @@ Snorby::Application.routes.draw do
       get :create_mass_action
       post :mass_action
       get :create_email
+      get :create_jira
       post :email
+      post :jira
       get :hotkey
       post :export
       get :lookup

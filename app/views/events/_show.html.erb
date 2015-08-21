@@ -61,6 +61,7 @@
 					<dl class='event-sub-menu round shadow' style='display:none;'>
 						<dd><%= link_to "XML", "#{Snorby::CONFIG[:baseuri]}/events/show/#{@event.sid}/#{@event.cid}.xml", :class => '' %></dd>
 						<dd><%= link_to "E-mail Event", create_email_events_path(:sid => @event.sid, :cid => @event.cid), :class => 'snorbybox' %></dd>
+						<dd><%= link_to "Create JIRA Ticket", create_jira_events_path(:sid => @event.sid, :cid => @event.cid), :class => 'snorbybox' %></dd>
 					</dl>
 				</li>
 				

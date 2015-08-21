@@ -1278,6 +1278,28 @@ var Snorby = {
 				return false;
 			});
 
+			$('button.jira-event-information').live('click', function(e) {
+		    e.preventDefault();
+				if ($('input#jira_subject').val() == '') {
+					flash_message.push({type: 'error', message: "JIRA subject cannot be blank."});flash();
+					$.scrollTo('#header', 500);
+				} else {
+					if ($('input#jira_description').val() == '') {
+						flash_message.push({type: 'error', message: "JIRA Description cannot be blank."});flash();
+						$.scrollTo('#header', 500);
+					} else {
+						if ($('input#jira_project').val() == '') {
+						    flash_message.push({type: 'error', message: "JIRA Project Queue cannot be blank."});flash();
+						    $.scrollTo('#header', 500)
+					    } else {
+						    $(document).trigger('limp.close');
+						    $.post(baseuri + '/events/jira', $('form.jira-event-information').serialize(), null, "script");
+					    };
+					};
+				};
+				return false;
+			});
+
 			$('button.request_packet_capture').live('click', function(e) {
 		    e.preventDefault();
 				if ($(this).attr('data-deepsee')) { $('form.request_packet_capture input#method').val('deepsee') };

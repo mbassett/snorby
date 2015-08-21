@@ -164,6 +164,20 @@ class EventsController < ApplicationController
     render :layout => false
   end
 
+  def create_jira
+    @event = Event.get(params[:sid], params[:cid])
+    render :layout => false
+  end
+
+  def jira
+    @event = Event.get(params[:sid], params[:cid])
+    json = render_to_string :json => { :event => @event.in_json, :jira => params[:jira] }
+    IO.popen('/opt/snorby/vendor/create_jira.py', 'r+') do |pipe|
+      pipe.puts(json)
+      pipe.close_write
+    end
+  end
+
   def email
     Delayed::Job.enqueue(Snorby::Jobs::EventMailerJob.new(params[:sid],
     params[:cid], params[:email]))
